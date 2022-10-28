@@ -34,6 +34,9 @@ public class characterDTO {
 	
 	private Date updateAt;
 
+	
+	
+	
 	public Date getCreatedAt() {
 		return createdAt;
 	}

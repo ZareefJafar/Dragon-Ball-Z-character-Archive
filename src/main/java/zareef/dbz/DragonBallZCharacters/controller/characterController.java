@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -57,7 +58,26 @@ public class characterController {
 	
 	
 	
-	
+	@PutMapping("/characters/{id}")
+	public ResponseEntity<?> updateById(@PathVariable("id") String id, @RequestBody characterDTO character){
+		Optional<characterDTO> characterOptional = characterRepo.findById(id);
+		if (characterOptional.isPresent()) {
+			characterDTO characterToSave = characterOptional.get();
+			characterToSave.setName(character.getName() != null ? character.getName() : characterToSave.getName());
+			characterToSave.setCreatedAt(character.getName() != null ? character.getCreatedAt() : characterToSave.getCreatedAt());
+			characterToSave.setGender(character.getGender() != null ? character.getGender() : characterToSave.getGender());
+			characterToSave.setRace(character.getRace() != null ? character.getRace() : characterToSave.getRace());
+			characterToSave.setAge(character.getAge() != 0 ? character.getAge() : characterToSave.getAge());
+			characterToSave.setSpecialpower(character.getSpecialpower() != null ? character.getSpecialpower() : characterToSave.getSpecialpower());
+			characterToSave.setUpdateAt(character.getUpdateAt() != null ? character.getUpdateAt() : characterToSave.getUpdateAt());
+			characterToSave.setTransform(character.getTransform() != null ? character.getTransform() : characterToSave.getTransform());
+			characterRepo.save(characterToSave);
+			return new ResponseEntity<>(characterToSave, HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>("character not found with id "+id, HttpStatus.NOT_FOUND);
+		}
+		
+	}
 	
 	
 	
