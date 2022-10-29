@@ -2,6 +2,8 @@ package zareef.dbz.DragonBallZCharacters.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -18,12 +20,16 @@ public class characterDTO {
 	
 	private String id;
 	
+	@NotNull(message = "Name field can not be null")
 	private String name;
 	
+	@NotNull(message = "Gender field can not be null")
 	private String gender;
 	
+	@NotNull(message = "Race field can not be null")
 	private String race;
 	
+	@NotNull(message = "Age field can not be null")
 	private int age;
 	
 	private String transform;

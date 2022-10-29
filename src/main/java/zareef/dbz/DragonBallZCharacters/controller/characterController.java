@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +17,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import zareef.dbz.DragonBallZCharacters.exception.characterCollectionException;
 import zareef.dbz.DragonBallZCharacters.model.characterDTO;
 import zareef.dbz.DragonBallZCharacters.repository.characterRepository;
+import zareef.dbz.DragonBallZCharacters.service.characterService;
 
 @RestController
 public class characterController {
@@ -24,36 +28,35 @@ public class characterController {
 	@Autowired
 	private characterRepository characterRepo;
 	
+	@Autowired
+	private characterService characterService;
+	
 	@GetMapping("/characters")
 	public ResponseEntity<?> getAllcharacters(){
-		List<characterDTO> characters = characterRepo.findAll();
-		if (characters.size() > 0) {
-			return new ResponseEntity<List<characterDTO>>(characters,HttpStatus.OK);
-		}else {
-			return new ResponseEntity<>("No characters available", HttpStatus.NOT_FOUND);
-		}
+		List<characterDTO> characters = characterService.getAllcharacter();
+		return new ResponseEntity<>(characters, characters.size() > 0 ? HttpStatus.OK : HttpStatus.NOT_FOUND);
 	}
 	
 	
 	@PostMapping("/characters")
 	public ResponseEntity<?> createcharacter(@RequestBody characterDTO character){
 		try{
-			character.setCreatedAt(new Date(System.currentTimeMillis()));
-			characterRepo.save(character);
+			characterService.createcharacter(character);
 			return new ResponseEntity<characterDTO>(character, HttpStatus.OK);
 			
-		}catch(Exception e) {
-			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+		}catch(ConstraintViolationException e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY);
+		}catch(characterCollectionException e){
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
 		}
 	}
 	
 	@GetMapping("/characters/{id}")
 	public ResponseEntity<?> getSinglecharacter(@PathVariable("id") String id){
-		Optional<characterDTO> characterOptional = characterRepo.findById(id);
-		if (characterOptional.isPresent()) {
-			return new ResponseEntity<>(characterOptional.get(), HttpStatus.OK);
-		}else {
-			return new ResponseEntity<>("No character is found with id "+id, HttpStatus.NOT_FOUND);
+		try {
+			return new ResponseEntity<>(characterService.getSinglecharacter(id), HttpStatus.OK);
+		}catch(Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}
 	
@@ -70,7 +73,7 @@ public class characterController {
 			characterToSave.setRace(character.getRace() != null ? character.getRace() : characterToSave.getRace());
 			characterToSave.setAge(character.getAge() != 0 ? character.getAge() : characterToSave.getAge());
 			characterToSave.setSpecialpower(character.getSpecialpower() != null ? character.getSpecialpower() : characterToSave.getSpecialpower());
-			characterToSave.setUpdateAt(character.getUpdateAt() != null ? character.getUpdateAt() : characterToSave.getUpdateAt());
+			characterToSave.setUpdateAt(new Date(System.currentTimeMillis()));
 			characterToSave.setTransform(character.getTransform() != null ? character.getTransform() : characterToSave.getTransform());
 			characterRepo.save(characterToSave);
 			return new ResponseEntity<>(characterToSave, HttpStatus.OK);
