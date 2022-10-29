@@ -119,7 +119,8 @@ Referring <a href="#usage3">Features</a> section for a chart of all working API'
 ## Features
 
   * Rest endpoints 
-
+  
+    * **GET:** http://localhost:8080/characters/ : Get a list of all characters
     * **POST:** http://localhost:8080/characters : Add  new characters to the database <br>
     Sample JSON for this request:
      ```
@@ -141,7 +142,7 @@ Referring <a href="#usage3">Features</a> section for a chart of all working API'
         "specialpower": "ki blast"
       }
       ```
-    * **GET:** http://localhost:8080/all/ : Get a list of all characters
+    
  
     
 <p align="right">(<a href="#top">back to top</a>)</p>
