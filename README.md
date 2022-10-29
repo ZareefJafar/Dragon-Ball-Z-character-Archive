@@ -1,22 +1,105 @@
-# Dragon-Ball-Z-character-Archive
 
-A spring boot integration with MongoDB NoSQL database program to create a character archive of the "Dragon Ball Z", which is a popular Japanese anime television series.
+# Dragon Ball Z character Archive - Backend - CRUD - SpringBoot
+  
+  
+<div id="top"></div>
 
-## Tools I have used:
-1. Spring boot, [spring initializr](https://start.spring.io/) version: 2.7.5
-2. [MongoDB Community Edition](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/), version: 6.0.2
-3. [Studio 3T](https://studio3t.com/download/) for MongoDB
-4. [Eclipse IDE](https://www.eclipse.org/downloads/packages/release/indigo/sr2/eclipse-ide-java-developers)
-5. JDK version: 11.0.16
-6. [Postman](https://www.postman.com/downloads/) API Platform
+<!-- TABLE OF CONTENTS -->
 
-Tested on Ubuntu 20.04.5 LTS
+## Table of Contents
 
-## Functionlities:
-Create a REST API with following functionality:
+  <ol>
+    <li>
+      <a href="#about2">About The Project</a>
+      <ul>
+        <li><a href="#build3">Structure</a></li>
+        <li><a href="#build2">Built With</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage2">Usage</a></li>
+    <li><a href="#usage3">Feature</a></li>
+    <li><a href="#contact2">Contact</a></li>
+  </ol>
 
-Create character\
-Read character\
-Update character\
-Delete character\
 
+
+<div id="about2"></div>
+
+
+<!-- ABOUT THE PROJECT -->
+
+## About The Project
+
+Its a springBoot CRUD application for the archive of Dragon Ball Z characters which is a popular Japanese anime television series. This backend system can receive and send REST API's. See below for further information.  
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+<div id="build3"></div>
+
+## Structure
+  
+### Dependency
+  Dependecy imported and used for SpringBoot Application -
+  * Spring Web
+  * Spring Data MongoDB 
+  * Lombok
+  * Spring Boot DevTools 
+
+### Directory
+```
+.
+└── DragonBallZCharacters/
+    ├── DragonBallZCharactersApplication.java
+    ├── controller/
+    │   └── characterController.java
+    ├── exception/
+    │   └── characterCollectionException.java
+    ├── config/
+    │   └── ValidationConfig.java
+    ├── repository/
+    │   └── characterRepository.java
+    └── service/
+        └── characterService.java
+        └── characterServiceImpl.java
+```  
+<p align="right">(<a href="#top">back to top</a>)</p>    
+
+<div id="build2"></div>
+  
+## Built With
+
+### Technology used
+
+  * SpringBoot
+  * MongoDB
+  * Java (JDK version: 11.0.16)
+
+
+### Software used
+  
+  * Postman
+  * Editor : Eclipse IDE
+  * Studio 3T
+  
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+
+
+
+
+<div id="usage2"></div>
+
+
+
+
+<!-- CONTACT -->
+## Contact
+
+You may contact with me via gmail if needed. 
+mail: zareefjafar31@gmail.com
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
