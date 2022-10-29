@@ -94,6 +94,63 @@ Its a springBoot CRUD application for the archive of Dragon Ball Z characters wh
 
 
 
+<!-- USAGE EXAMPLES -->
+## Usage
+
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+I used `Postman` to test REST api's. I've attached few gif's of testing from postman.
+* Testing for `GET`, `POST`  
+<img src="gifs/dbz_01.gif" width=764 align="center">
+
+* Testing for `PUT`, `DELETE`  <br>
+<img src="gifs/dbz_02.gif" align="center">
+
+Referring <a href="#usage3">Features</a> section for a chart of all working API's.
+
+
+<div id="usage3"></div>
+
+
+
+
+
+
+<!-- USAGE EXAMPLES -->
+## Features
+
+  * Rest endpoints 
+
+    * **POST:** http://localhost:8080/characters : Add  new characters to the database <br>
+    Sample JSON for this request:
+     ```
+      {
+          "name": "piccolo",
+          "gender": "male",
+          "race": "namekian",
+          "age": 25,
+          "transform": "orange piccolo",
+          "specialpower": "special beam cannon"
+      }
+      ```
+    * **DELETE:** http://localhost:8080/characters/{id} : Delete a characters by it's id
+    * **PUT:** http://localhost:8080/characters/{id} : Update characters by it's id
+    Sample JSON for this request:
+     ```
+      {
+        "transform": "great ape",
+        "specialpower": "ki blast"
+      }
+      ```
+    * **GET:** http://localhost:8080/all/ : Get a list of all characters
+ 
+    
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
 
 <!-- CONTACT -->
 ## Contact
