@@ -103,10 +103,10 @@ Its a springBoot CRUD application for the archive of Dragon Ball Z characters wh
 
 I used `Postman` to test REST api's. I've attached few gif's of testing from postman.
 * Testing for `GET`, `POST`  
-<img src="gifs/dbz_01.gif" width=500 align="center">
+<img src="gifs/dbz_01.gif" align="center">
 
 * Testing for `PUT`, `DELETE`  <br>
-<img src="gifs/dbz_02.gif" width=500 align="center">
+<img src="gifs/dbz_02.gif" align="center">
 
 Referring <a href="#usage3">Features</a> section for a chart of all working API's.
 
