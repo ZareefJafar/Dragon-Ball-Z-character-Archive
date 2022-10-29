@@ -53,4 +53,39 @@ public class characterServiceImpl implements characterService {
 		
 	}
 
+	@Override
+	public void updatecharacter(String id, characterDTO character) throws characterCollectionException {
+		Optional<characterDTO> characterWithId = characterRepo.findById(id);
+		Optional<characterDTO> characterWithSameName = characterRepo.findBycharacter(character.getName());
+		
+		if (characterWithId.isPresent()) {
+			if (characterWithSameName.isPresent() && !characterWithSameName.get().getId().equals(id)) {
+				throw new characterCollectionException(characterCollectionException.characterAlreadyExists());
+			}
+			
+			characterDTO characterToUpdate = characterWithId.get();
+			
+			characterToUpdate.setName(character.getName());
+			characterToUpdate.setGender(character.getGender());
+			characterToUpdate.setRace(character.getRace());
+			characterToUpdate.setAge(character.getAge());
+			characterToUpdate.setTransform(character.getTransform());
+			characterToUpdate.setSpecialpower(character.getSpecialpower());
+			characterToUpdate.setUpdateAt(new Date(System.currentTimeMillis()));
+			characterRepo.save(characterToUpdate);
+		}else {
+			throw new characterCollectionException(characterCollectionException.NotFoundException(id));
+		}
+	}
+
+	@Override
+	public void deletecharacterById(String id) throws characterCollectionException {
+		Optional<characterDTO> characterOptional = characterRepo.findById(id);
+		if (!characterOptional.isPresent()) {
+			throw new characterCollectionException(characterCollectionException.NotFoundException(id));
+		}else {
+			characterRepo.deleteById(id);
+		}
+	}
+
 }

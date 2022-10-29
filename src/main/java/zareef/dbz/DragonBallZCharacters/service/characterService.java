@@ -14,5 +14,9 @@ public interface characterService {
 	public List<characterDTO> getAllcharacter();
 	
 	public characterDTO getSinglecharacter(String id) throws characterCollectionException;
+	
+	public void updatecharacter(String id, characterDTO character) throws characterCollectionException;
+	
+	public void deletecharacterById(String id) throws characterCollectionException;
 
 }
