@@ -30,7 +30,7 @@
 
 ## About The Project
 
-Its a springBoot CRUD application for the archive of Dragon Ball Z characters which is a popular Japanese anime television series. This backend system can receive and send REST API's. See below for further information.  
+Its a springBoot CRUD application for the archive of Dragon Ball Z characters, which is a popular Japanese anime television series. This backend system can receive and send REST API's. See below for further information.  
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
