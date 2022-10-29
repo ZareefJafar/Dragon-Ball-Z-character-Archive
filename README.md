@@ -105,7 +105,7 @@ I used `Postman` to test REST api's. I've attached few gif's of testing from pos
 * Testing for `GET`, `POST`  
 <img src="gifs/dbz_01.gif" align="center">
 
-* Testing for `PUT`, `DELETE`  <br>
+* Testing for `PUT`, `DELETE`
 <img src="gifs/dbz_02.gif" align="center">
 
 Referring <a href="#usage3">Features</a> section for a chart of all working API's.
