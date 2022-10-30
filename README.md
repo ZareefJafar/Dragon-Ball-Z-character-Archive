@@ -135,6 +135,7 @@ Referring <a href="#usage3">Features</a> section for a chart of all working API'
       ```
     * **DELETE:** http://localhost:8080/characters/{id} : Delete a characters by it's id
     * **PUT:** http://localhost:8080/characters/{id} : Update characters by it's id
+    
     Sample JSON for this request:
      ```
       {
